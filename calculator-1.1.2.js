@@ -1,4 +1,4 @@
-<!-- calculator code-->
+// calculator code
 var discount, range, membership, image_type, pay_yearly, price_per_image, membership_price, discounted_price_per_image, number_of_images, images_subtotal, saved, total;
 
 // Describe this function...
@@ -81,7 +81,7 @@ $("[name^='number_of_images-']").on("input", function (e) {
   CalculateAllRanges();
   Range_Function(id);
 });
-    <!-- in case you input is radio button -->
+    // in case you input is radio button 
 $("[name^='number_of_images-']").parent("label.w-radio").on("click", function () {
   let id = $(e.target).data("id");
   range = getValueFromInput('number_of_images-' + id);
