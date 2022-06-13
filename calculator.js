@@ -48,17 +48,14 @@ $(document).ready(function () {
     }
   });
 });
-</script>
 
-<script>
+
 /* Intercept click of my-button
 and trigger click of my-lightbox */ 
 
 
-</script>
 
 <!-- calculator code-->
-<script>
 var discount, range, membership, image_type, pay_yearly, price_per_image, membership_price, discounted_price_per_image, number_of_images, images_subtotal, saved, total;
 
 // Describe this function...
