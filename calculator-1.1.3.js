@@ -70,7 +70,7 @@ function Total_Price() {
 discount = 0;
 price_per_image = 0;
 membership_price = 0;
-range = 10;
+range = 1;
 membership = 1;
 updateValueInInputData('1',"membership");
 
