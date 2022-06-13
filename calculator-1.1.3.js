@@ -92,7 +92,7 @@ $("[name^='number_of_images-']").parent("label.w-radio").on("click", function ()
 
 // html example: https://g6jds.csb.app/range_slider.txt
 $(document).ready(function () {
-    range = 10;
+    range = 1;
     $('[name^="range-"]').val(range);
     swiper_func_range('.range-thumb');
     $('[name^="range-"]').map((e) => {
@@ -214,6 +214,11 @@ $(".calc--checboxes-wrapper [type=checkbox]").on("click", function (event) {
             price_per_image = 0;
         }
         Total_Price();
+    }
+    if (checkedArray.length > 1) {
+      $(".calc-col--right .price-per-image").text("Price range")
+    } else {
+      $(".calc-col--right .price-per-image").text("Price per image")
     }
 });
 $("[name=pay_yearly]").on("input", function () {
