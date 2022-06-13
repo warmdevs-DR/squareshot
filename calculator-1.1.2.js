@@ -198,7 +198,7 @@ $(".calc--checboxes-wrapper [type=checkbox]").on("click", function (event) {
         Total_Price();
     }
     else {
-    	calc_block_bg[0].style.backgroundColor = "#000000";
+    	calc_block_bg[0].style.backgroundColor = "#ffffff";
       range_block.hide();
         if(checkedArray.length > 0) {
             checkedArray = checkedArray.filter(function(el) {
