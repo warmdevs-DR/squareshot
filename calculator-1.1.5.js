@@ -59,10 +59,10 @@ function Total_Price() {
       current_range = $("#"+val["name"]).closest(".calc--checbox-block").find("[name^='number_of_images-']").val();
       price_per_image = parseFloat(val["price"]);
       discounted_price_per_image = price_per_image * (1 - discount);
-      val_price_per_image += (Math.round(discounted_price_per_image1))/1;
-      images_subtotal = discounted_price_per_image current_range;
-      val_images_subtotal += (Math.round(images_subtotal100))/100;
-      saved += (price_per_image current_range - images_subtotal) - membership_price;
+      val_price_per_image += (Math.round(discounted_price_per_image*1))/1;
+      images_subtotal = discounted_price_per_image * current_range;
+      val_images_subtotal += (Math.round(images_subtotal*100))/100;
+      saved += (price_per_image * current_range - images_subtotal) - membership_price;
       total += images_subtotal;
       if (saved < 0) {
         saved = 0;
@@ -70,12 +70,11 @@ function Total_Price() {
     });
     $('#val-price-per-image').text(('$' + String(val_price_per_image)));
     $('#val-images-subtotal').text(('$' + String(numberWithCommas(val_images_subtotal,","))));
-    $('#val-saved').text(('$' + String(numberWithCommas((Math.round(saved100))/100,","))));
+    $('#val-saved').text(('$' + String(numberWithCommas((Math.round(saved*100))/100,","))));
     total += membership_price;
-    $('#val-total').text(('$' + String(numberWithCommas((Math.round(total100))/100,","))));
+    $('#val-total').text(('$' + String(numberWithCommas((Math.round(total*100))/100,","))));
   }
 }
-
 
 discount = 0;
 price_per_image = 0;
