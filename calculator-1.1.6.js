@@ -52,12 +52,16 @@ function Total_Price() {
   var current_range = CalculateAllRanges(true);
   var val_price_per_image = 0;
   var val_images_subtotal = 0;
+  var min = 9999;
+  var max = 0;
   if (price_per_image != null) {
     total = 0;
     saved = 0;
     $(checkedArray).each((key,val) => {
       current_range = $("#"+val["name"]).closest(".calc--checbox-block").find("[name^='number_of_images-']").val();
       price_per_image = parseFloat(val["price"]);
+      min = Math.min(min, price_per_image);
+      max = Math.max(max, price_per_image);
       discounted_price_per_image = price_per_image * (1 - discount);
       val_price_per_image += (Math.round(discounted_price_per_image*1))/1;
       images_subtotal = discounted_price_per_image * current_range;
@@ -68,7 +72,10 @@ function Total_Price() {
         saved = 0;
       }
     });
-    $('#val-price-per-image').text(('$' + String(val_price_per_image)));
+    if (checkedArray.length > 1)
+      $('#val-price-per-image').text(('$' + String(min) + " - $" + String(max)));
+    else
+      $('#val-price-per-image').text(('$' + String(val_price_per_image)));
     $('#val-images-subtotal').text(('$' + String(numberWithCommas(val_images_subtotal,","))));
     $('#val-saved').text(('$' + String(numberWithCommas((Math.round(saved*100))/100,","))));
     total += membership_price;
