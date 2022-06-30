@@ -3,7 +3,7 @@ var discount, range, membership, image_type, pay_yearly, price_per_image, member
 
 // Describe this function...
 function Range_Function(id) {
-  membership = getValueFromInputData('range');
+//   membership = getValueFromInputData('range');
   CalculateAllRanges();
   updateValueInInput(range,'number_of_images-' + id);
   Total_Price();
