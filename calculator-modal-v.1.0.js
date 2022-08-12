@@ -148,6 +148,7 @@ const inputEvent = function(...itemsData) {
 		})
 		itemsData[0].forEach(el => {
 			if (el.checked == true) {
+				document.querySelector('.radio-btn--active').remove() // удаляет первый найденый класс
 				let planSelected = summaryData.find(item => {
 					return item.value === Number(el.value)
 				})
