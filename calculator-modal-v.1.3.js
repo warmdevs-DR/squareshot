@@ -4,6 +4,7 @@ const btnPlus = document.querySelectorAll("#calc-plus");
 const btnMinus = document.querySelectorAll("#calc-minus");
 const frontData = document.querySelectorAll('span'); // all span on page
 const imageCheckbox = document.querySelectorAll('.dropdown-checkbox');
+const imageCheckboxChildNodes = document.querySelectorAll('.checkbox-block');
 const formData = document.forms;
 
 //modal observer
@@ -59,7 +60,7 @@ let summaryData = [
 	 {dataName: "image_total_count", total: 0}, 
 	 {dataName: "peice_per_image", total: 0},
 	 {dataName: "image_total", total: 0},
-	 {dataName: 'plan_info', planPrice: 0, total: 'Select the plan'},
+	 {dataName: 'plan_info', planPrice: 0, total: 'Free of charge'},
 	 {dataName: "total", total: 0},
 	 {dataName: "save", total: 0},
 ]
@@ -134,7 +135,9 @@ const sendDataSummary = function() {
 
 // sendData to inputs in checked image types
 const sendDataInputs = function(...data) {
-	let frontInput = document.querySelector("input[name="+data[0].name+"]")
+	console.log(data)
+	let frontInput = document.querySelector("input[name="+data[0].name+"]");
+	console.log('frontInput', frontInput)
 	data[0].value != undefined ? frontInput.value = data[0].value : frontInput.value = data[0].count;
 	calculator()
 }
@@ -180,7 +183,7 @@ const inputEvent = function(...itemsData) {
 	else {
 		console.log('else')
 	}
-	console.log(summaryData)
+	//console.log(summaryData) // test 
 	
 }
 
@@ -218,7 +221,7 @@ for (i = 0; i < btnMinus.length; i++) {
 //find all checked checkbox image types
 for (i = 0; i < imageCheckbox.length; i++) {
 	imageCheckbox[i].setAttribute("index", i)
-	imageCheckbox[i].childNodes.forEach(el => {
+	imageCheckboxChildNodes[i].childNodes.forEach(el => {
 		el.setAttribute('index', i)
 	})
 	
@@ -313,16 +316,16 @@ const calculator = function() {
 		let planPrice = summaryData.find(item => item.dataName === "plan_info").planPrice
 		let saveData = summaryData.find(item => item.dataName === 'save');
 		let calcTotal = summaryData.find(item => item.dataName === 'total');
-		console.log(calcTotal)
 		calcTotal.total = planPrice + imageTotalSum;
 		
 		if (plan.value == 2) {
 			let calcSave = Math.round(Number((imageTotalSum)*0.25) + Number(imageTotalSum), 1)
-			saveData.total = calcSave - imageTotalSum;
+			calcSave - (imageTotalSum + planPrice) < 0 ? saveData.total = 0 : saveData.total = calcSave - (imageTotalSum + planPrice);
+			 
 		} 
 		else if (plan.value == 3) {
 			let calcSave = Math.round(Number((imageTotalSum)*0.42857142857142854) + Number(imageTotalSum), 1)
-			saveData.total = calcSave - imageTotalSum;
+			calcSave - (imageTotalSum + planPrice) < 0 ? saveData.total = 0 : saveData.total = calcSave - (imageTotalSum + planPrice);
 		}
 		else {
 			saveData.total = 0;
