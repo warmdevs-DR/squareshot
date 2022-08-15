@@ -135,9 +135,7 @@ const sendDataSummary = function() {
 
 // sendData to inputs in checked image types
 const sendDataInputs = function(...data) {
-	console.log(data)
 	let frontInput = document.querySelector("input[name="+data[0].name+"]");
-	console.log('frontInput', frontInput)
 	data[0].value != undefined ? frontInput.value = data[0].value : frontInput.value = data[0].count;
 	calculator()
 }
